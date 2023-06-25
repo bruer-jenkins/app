@@ -1,34 +1,13 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a create-next-app accepting all the defaults from the setup prompts, which means it is configured for Typescript, Tailwind CSS, ESLint, and the new NextJS App directory. Server rendered components are new to React and by default, all components are server components unless a 'use client' directive is use at the very top of the component's file (before the import statements).
 
-## Getting Started
+For our backend, we have some choices to make:
 
-First, run the development server:
+-should we stay in the NextJS/Vercel ecosystem and build our api with their serverless api routes? NextJS is designed to be a "full-stack" framework and Vercel is optimized and built very nice deployment conveniences. makes it so we can keep it all in one repo instead of separate front and backend projects.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+-or should we build a separate backend (Node/Express)? Serverless isn't without it's limitations. Serverless does not support web sockets.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+-we should definitely have either a database or some alternative way of persisting data. I would be down for Postgres/Sequelize or MongoDB/Mongoose. I would also be down for learning something new.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+-should probably have some sort of authentication/authorization. However, I've heard that portfolio projects should not require recruiters/employers to login to experience the app. Still most real-world apps require login.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+-I would like it to have real-time functionality. If we go the serverless route, I am in unfamiliar territory. We would have to figure that out...could be fun.
