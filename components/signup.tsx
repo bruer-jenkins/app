@@ -1,6 +1,8 @@
 "use client";
 import "./style.css";
 import { useState, ChangeEvent, FormEvent } from "react";
+import signUp from "@/firebase/auth/signup";
+import { useRouter } from "next/navigation";
 
 type FormVals = {
   name: string;
@@ -8,6 +10,7 @@ type FormVals = {
   password: string;
 };
 export default function Signup() {
+  const router = useRouter();
   const [formVals, setFormVals] = useState<FormVals>({
     name: "",
     email: "",
@@ -27,12 +30,8 @@ export default function Signup() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3000/api", {
-        method: "POST",
-        body: JSON.stringify(formVals),
-      });
-      const data = await response.json();
-      setRes(data);
+      const what = await signUp(formVals.email, formVals.password);
+      router.push("/dashboard");
     } catch (error) {
       //build out error handling
       console.log(error);
